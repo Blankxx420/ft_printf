@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 15:32:54 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:56:12 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	ft_printf(const char *format, ...)
 	index = 0;
 	len = 0;
 	va_start(ptr, format);
+	if (!va_arg(ptr, char *))
+	{
+		len += ft_putstrlen("(null)");
+	}
 	while (format[index])
 	{
 		if (format[index] == '%')
@@ -31,7 +35,12 @@ int	ft_printf(const char *format, ...)
 				len += 1;
 			}
 			if (format[index + 1] == 's')
-				len += ft_putstrlen(va_arg(ptr, char *));
+			{
+				if (!va_arg(ptr, char *))
+					len += ft_putstrlen("(null)");
+				else
+					len += ft_putstrlen(va_arg(ptr, char *));
+			}
 			if (format[index + 1] == 'p')
 			{
 				len += ft_putstrlen("0x");
