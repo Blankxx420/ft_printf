@@ -6,30 +6,38 @@
 #    By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 09:50:15 by brguicho          #+#    #+#              #
-#    Updated: 2023/11/10 09:56:26 by brguicho         ###   ########.fr        #
+#    Updated: 2023/11/13 10:43:15 by brguicho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-SRCS = 
+SRCS = 	ft_printf.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C ./libft
+	cp  ./libft/libft.a libftprintf.a
 	ar cr $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) main.c -I ./libft -I . -L . -lftprintf
+	make clean
+	./a.out
 	
 %.o: %.c $(SRCS)
 	${CC} ${CFLAGS} -o $@ -c $<
 
 clean:
 	rm -rf  $(OBJS)
+	make clean -C ./libft
 	
 fclean: clean
 	rm -rf $(NAME)
+	make fclean -C ./libft
 	
 re: fclean all
+
 
 .PHONY: all clean fclean re
