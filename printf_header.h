@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:02:26 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 11:42:59 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:25:02 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-int	ft_printf(const char *, ...);
-int	ft_putstrlen(char *str);
+int				ft_printf(const char *, ...);
+int				ft_putstrlen(char *str);
+long long int	ft_putnbr_basel(int nbr, char *base);
 #endif

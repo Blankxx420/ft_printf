@@ -6,14 +6,14 @@
 #    By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 09:50:15 by brguicho          #+#    #+#              #
-#    Updated: 2023/11/13 11:43:12 by brguicho         ###   ########.fr        #
+#    Updated: 2023/11/13 14:09:02 by brguicho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-SRCS = 	ft_printf.c ft_putstrlen.c
+SRCS = 	ft_printf.c ft_putstrlen.c ft_putnbr_basel.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
