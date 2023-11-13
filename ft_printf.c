@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 14:24:05 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:32:54 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,24 @@ int	ft_printf(const char *format, ...)
 			}
 			if (format[index + 1] == 's')
 				len += ft_putstrlen(va_arg(ptr, char *));
-			if (format[index + 1] == 'i')
+			if (format[index + 1] == 'p')
+			{
+				len += ft_putstrlen("0x");
+				len += ft_putnbr_basel((long long int)va_arg(ptr, long long), "0123456789abcdef");
+			}
+			if (format[index + 1] == 'i' || format[index + 1] == 'd')
+				len += ft_putnbr_basel(va_arg(ptr, int), "0123456789");
+			if (format[index + 1] == 'u')
 				len += ft_putnbr_basel(va_arg(ptr, long long int), "0123456789");
+			if (format[index + 1] == 'x')
+				len += ft_putnbr_basel(va_arg(ptr, long long int), "0123456789abcdef");
+			if (format[index + 1] == 'X')
+				len += ft_putnbr_basel(va_arg(ptr, long long int), "0123456789ABCDEF");
+			if (format[index + 1] == '%')
+			{
+				ft_putchar_fd('%', 1);
+				len += 1;
+			}
 			if (format[index + 2] != '\0')
 				index += 2;
 			else 

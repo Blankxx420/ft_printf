@@ -6,11 +6,28 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:01:33 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 14:24:47 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:14:13 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_header.h"
+
+static int	ft_nbrlen(long long int n, size_t basesize)
+{
+	int	count;
+
+	count = 0;
+	if (n < 0)
+	{
+		count++;
+	}
+	while (n)
+	{
+		n /= basesize;
+		count++;
+	}
+	return (count);
+}
 
 static int	ft_base_is_valid(char *base)
 {
@@ -30,14 +47,14 @@ static int	ft_base_is_valid(char *base)
 	return (1);
 }
 
-long long int ft_putnbr_basel(int nbr, char *base)
+int ft_putnbr_basel(long long int nbr, char *base)
 {
-	long long int	basesize;
+	size_t basesize;
 	long long int	nbr2;
-	long long int 	len;
+	int 			len;
 
 	basesize = ft_strlen(base);
-	len = 0;
+	len = ft_nbrlen(nbr, basesize);
 	if (ft_base_is_valid(base) == 1)
 	{
 		if (nbr == -2147483648)
@@ -48,21 +65,16 @@ long long int ft_putnbr_basel(int nbr, char *base)
 		if (nbr < 0)
 		{
 			write(1, "-", 1);
-			len++;
 			nbr = nbr * -1 ;
 		}
-		if (nbr >= basesize - 1)
+		if (nbr >= (long long int)basesize - 1)
 		{
 			nbr2 = nbr % basesize;
 			ft_putnbr_basel(nbr / basesize, base);
 			write(1, &base[nbr2], 1);
-			len++;
 		}
 		else
-		{
 			write(1, &base[nbr], 1);
-			len++;
-		}
 	}
 	return (len);
 }

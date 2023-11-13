@@ -6,11 +6,11 @@
 #    By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 09:50:15 by brguicho          #+#    #+#              #
-#    Updated: 2023/11/13 14:09:02 by brguicho         ###   ########.fr        #
+#    Updated: 2023/11/13 15:42:23 by brguicho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 SRCS = 	ft_printf.c ft_putstrlen.c ft_putnbr_basel.c
