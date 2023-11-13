@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 11:28:06 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:44:16 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	ft_printf(const char *format, ...)
 			ft_putchar_fd(va_arg(ptr, int), 1);
 			index += 2;
 			len += 1;
+		}
+		if (format[index] == '%' && format[index + 1] == 's')
+		{
+			len += ft_putstrlen(va_arg(ptr, char *));
+			index += 2;
 		}
 		ft_putchar_fd(format[index], 1);
 		index++;

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_header.h                                    :+:      :+:    :+:   */
+/*   ft_putstrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 10:02:26 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 11:42:59 by brguicho         ###   ########.fr       */
+/*   Created: 2023/11/13 11:40:20 by brguicho          #+#    #+#             */
+/*   Updated: 2023/11/13 11:42:29 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_HEADER_H
-# define PRINTF_HEADER_H
+#include "printf_header.h"
 
-# include <stdarg.h>
-# include "libft/libft.h"
-
-int	ft_printf(const char *, ...);
-int	ft_putstrlen(char *str);
-#endif
+int	ft_putstrlen(char *str)
+{
+	int index;
+	
+	index = 0;
+	while (str[index])
+	{
+		ft_putchar_fd(str[index], 1);
+		index++;
+	}
+	return (index);
+}

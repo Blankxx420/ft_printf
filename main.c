@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:34 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 11:23:12 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:36:58 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	main(void)
 	nbr = 22;
 	unbr = 19461811;
 	
-	result = ft_printf("ma fonction %c lulu", 'a');
+	result = ft_printf("ma fonction %s lulu", "stresvs");
 	printf("%c", '\n');
 	printf("%d", result);
 	printf("%c", '\n');
-	result = printf("la fonction %c lulu", 'a');
+	result = printf("la fonction %s lulu", "stresvs");
 	printf("%c", '\n');
 	printf("%d", result);
 	printf("%c", '\n');
