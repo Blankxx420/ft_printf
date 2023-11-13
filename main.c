@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:34 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/10 11:55:05 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:23:12 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,20 @@ int	main(void)
 	void			*ptr;
 	int				nbr;
 	unsigned int	unbr;
+	int				result;
 
 	ptr = "stsufhsuhf";
 	nbr = 22;
 	unbr = 19461811;
-	assert(ft_printf("%c", 'a') == printf("%c", 'a'));
+	
+	result = ft_printf("ma fonction %c lulu", 'a');
+	printf("%c", '\n');
+	printf("%d", result);
+	printf("%c", '\n');
+	result = printf("la fonction %c lulu", 'a');
+	printf("%c", '\n');
+	printf("%d", result);
+	printf("%c", '\n');
 		//assert(ft_printf("%s Ma fonction: ", "abc") == printf("%s La fonction: ", "abc"));
 		//assert(ft_printf("%p Ma fonction: ", ptr) == printf("%p La fonction: ", ptr));
 		//assert(ft_printf("%d Ma fonction: ", 45) == printf("%d La fonction: ", 45));
