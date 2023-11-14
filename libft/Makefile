@@ -1,4 +1,4 @@
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 OBJ = $(SRCS:.c=.o)

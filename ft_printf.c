@@ -6,11 +6,12 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/14 10:39:47 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:21:01 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_header.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -30,8 +31,9 @@ int	ft_printf(const char *format, ...)
 				ft_putchar_fd(va_arg(ptr, int), 1);
 				len += 1;
 			}
-			if (format[index + 1] == 's' && va_arg(ptr, char *) == NULL)
-			else if (format[index + 1] == 's' && va_arg(ptr, char *) != NULL)
+			if (format[index + 1] == 's' && va_arg(ptr,  char *) == NULL)
+				len += ft_putstrlen("(null)");
+			else if (format[index + 1] == 's' && (char *)va_arg(ptr, char *) != NULL)
 			{
 				len += ft_putstrlen(va_arg(ptr, char *));
 			}
@@ -42,8 +44,6 @@ int	ft_printf(const char *format, ...)
 				len += ft_putstrlen("0x");
 				len += ft_putnbr_basel((long long int)va_arg(ptr, int), "0123456789abcdef");
 			}
-            else if (format[index + 1] == 'p' && va_arg(ptr, void *) == 0)
-                len += ft_putstrlen("(nil)");
 			if (format[index + 1] == 'i' || format[index + 1] == 'd')
 				len += ft_putnbr_basel(va_arg(ptr, long long), "0123456789");
 			if (format[index + 1] == 'u')
@@ -59,7 +59,7 @@ int	ft_printf(const char *format, ...)
 			}
 			if (format[index + 2] != '\0')
 				index += 2;
-			else 
+			else
 				break;
 		}
 		ft_putchar_fd(format[index], 1);
