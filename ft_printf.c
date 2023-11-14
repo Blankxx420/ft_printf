@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 15:56:12 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:55:21 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ int	ft_printf(const char *format, ...)
 	index = 0;
 	len = 0;
 	va_start(ptr, format);
-	if (!va_arg(ptr, char *))
-	{
-		len += ft_putstrlen("(null)");
-	}
 	while (format[index])
 	{
 		if (format[index] == '%')
@@ -34,18 +30,19 @@ int	ft_printf(const char *format, ...)
 				ft_putchar_fd(va_arg(ptr, int), 1);
 				len += 1;
 			}
-			if (format[index + 1] == 's')
+			if (format[index + 1] == 's' && va_arg(ptr, char *) != NULL)
 			{
-				if (!va_arg(ptr, char *))
-					len += ft_putstrlen("(null)");
-				else
-					len += ft_putstrlen(va_arg(ptr, char *));
+				len += ft_putstrlen(va_arg(ptr, char *));
 			}
-			if (format[index + 1] == 'p')
+            else if (format[index + 1] == 's' && va_arg(ptr, char *) == NULL)
+                len += ft_putstrlen("(null)");
+			if (format[index + 1] == 'p' && va_arg(ptr, void *) != NULL)
 			{
 				len += ft_putstrlen("0x");
-				len += ft_putnbr_basel((long long int)va_arg(ptr, long long), "0123456789abcdef");
+				len += ft_putnbr_basel((long long int)va_arg(ptr, int), "0123456789abcdef");
 			}
+            else if (format[index + 1] == 'p' && va_arg(ptr, void *) == 0)
+                len += ft_putstrlen("(nil)");
 			if (format[index + 1] == 'i' || format[index + 1] == 'd')
 				len += ft_putnbr_basel(va_arg(ptr, int), "0123456789");
 			if (format[index + 1] == 'u')
@@ -65,7 +62,7 @@ int	ft_printf(const char *format, ...)
 				break;
 		}
 		ft_putchar_fd(format[index], 1);
-		index++;
+        index++;
 		len++;
 	}
 	va_end(ptr);
