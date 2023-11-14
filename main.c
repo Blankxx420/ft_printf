@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:34 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 18:57:50 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/14 08:09:21 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <assert.h>
 
 int	main(void)
-{;
+{
 	int	result;
 	//assert(ft_printf("Ma fonction: %s\n", "abc") == printf("La fonction: %s\n", "abc"));
 		//assert(ft_printf("%p Ma fonction: ", ptr) == printf("%p La fonction: ", ptr));

@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/13 18:55:21 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:17:34 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	ft_printf(const char *format, ...)
 			}
             else if (format[index + 1] == 's' && va_arg(ptr, char *) == NULL)
                 len += ft_putstrlen("(null)");
-			if (format[index + 1] == 'p' && va_arg(ptr, void *) != NULL)
+			if (format[index + 1] == 'p' && &ptr != NULL)
 			{
 				len += ft_putstrlen("0x");
 				len += ft_putnbr_basel((long long int)va_arg(ptr, int), "0123456789abcdef");
 			}
-            else if (format[index + 1] == 'p' && va_arg(ptr, void *) == 0)
+            else if (format[index + 1] == 'p' && &ptr == NULL)
                 len += ft_putstrlen("(nil)");
 			if (format[index + 1] == 'i' || format[index + 1] == 'd')
-				len += ft_putnbr_basel(va_arg(ptr, int), "0123456789");
+				len += ft_putnbr_basel(va_arg(ptr, long long), "0123456789");
 			if (format[index + 1] == 'u')
 				len += ft_putnbr_basel(va_arg(ptr, long long int), "0123456789");
 			if (format[index + 1] == 'x')
