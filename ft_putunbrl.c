@@ -1,28 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrlen.c                                     :+:      :+:    :+:   */
+/*   ft_putunbrl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 11:40:20 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/15 08:53:59 by brguicho         ###   ########.fr       */
+/*   Created: 2023/11/15 11:30:19 by brguicho          #+#    #+#             */
+/*   Updated: 2023/11/15 19:26:13 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstrlen(char *str)
+static int	ft_unbrlen(unsigned int n)
 {
-	int index;
-	
-	index = 0;
-	if (str == NULL)
-		return (ft_putstrlen("(null)"));
-	while (str[index])
+	int	count;
+
+	count = 0;
+	while (n)
 	{
-		ft_putchar_fd(str[index], 1);
-		index++;
+		n /= 10;
+		count++;
 	}
-	return (index);
+	return (count);
+}
+
+int ft_putunbrl(unsigned int n)
+{
+    unsigned int nbr_len;
+    
+    nbr_len = ft_unbrlen(n);
+	if (n == 0)
+		return ft_putcharl('0');
+	if (n >= 10)
+	{
+		ft_putnbrl(n / 10);
+		ft_putnbrl(n % 10);
+	}
+	else
+	{
+		n = n + 48;
+		ft_putcharl(n);
+	}
+    return (nbr_len);
 }

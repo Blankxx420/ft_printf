@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrlen.c                                     :+:      :+:    :+:   */
+/*   ft_putcharl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 11:40:20 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/15 08:53:59 by brguicho         ###   ########.fr       */
+/*   Created: 2023/11/15 10:59:37 by brguicho          #+#    #+#             */
+/*   Updated: 2023/11/15 18:08:48 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstrlen(char *str)
+int ft_putcharl(char c)
 {
-	int index;
-	
-	index = 0;
-	if (str == NULL)
-		return (ft_putstrlen("(null)"));
-	while (str[index])
-	{
-		ft_putchar_fd(str[index], 1);
-		index++;
-	}
-	return (index);
+    write(1, &c, 1);
+    return(1);
 }

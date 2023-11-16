@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:01:33 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/14 12:27:44 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:48:53 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int ft_putnbr_basel(long long int nbr, char *base)
 
 	basesize = ft_strlen(base);
 	len = ft_nbrlen(nbr, basesize);
-	nbr2 = 0;
 	if (ft_base_is_valid(base) == 1)
 	{
 		if (nbr == -2147483648)

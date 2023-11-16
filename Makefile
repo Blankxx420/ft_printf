@@ -6,14 +6,14 @@
 #    By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 09:50:15 by brguicho          #+#    #+#              #
-#    Updated: 2023/11/14 11:23:28 by brguicho         ###   ########.fr        #
+#    Updated: 2023/11/15 18:10:27 by brguicho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-SRCS = 	ft_printf.c ft_putstrlen.c ft_putnbr_basel.c
+SRCS = 	ft_printf.c ft_putstrlen.c ft_putnbr_basel.c ft_putcharl.c ft_putnbrl.c ft_putunbrl.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
