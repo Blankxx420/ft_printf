@@ -6,12 +6,12 @@
 #    By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 09:50:15 by brguicho          #+#    #+#              #
-#    Updated: 2023/11/15 18:10:27 by brguicho         ###   ########.fr        #
+#    Updated: 2023/11/16 12:18:48 by brguicho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = libftprintf.a
 SRCS = 	ft_printf.c ft_putstrlen.c ft_putnbr_basel.c ft_putcharl.c ft_putnbrl.c ft_putunbrl.c
 OBJS = $(SRCS:.c=.o)
@@ -24,7 +24,7 @@ $(NAME): $(OBJS)
 	ar cr $(NAME) $(OBJS)
 	$(CC) $(CFLAGS) main.c -I ./libft -I . -L . -lftprintf
 	make clean
-	./a.out
+	valgrind ./a.out
 	
 %.o: %.c $(SRCS)
 	${CC} ${CFLAGS} -o $@ -c $<
