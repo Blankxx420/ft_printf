@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:40:20 by brguicho          #+#    #+#             */
-/*   Updated: 2023/12/08 12:57:59 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:10:02 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putstrlen(char *str)
 		return (ft_putstrlen("(null)"));
 	while (str && str[index])
 	{
-		ft_putchar_fd(str[index], 1);
+		ft_putcharl(str[index]);
 		index++;
 	}
 	return (index);
