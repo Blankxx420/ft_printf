@@ -6,7 +6,7 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:46:16 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/15 19:22:39 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:57:37 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,15 @@ static int	ft_nbrlen(int n)
 	return (count);
 }
 
-
-int ft_putnbrl(int n)
+int	ft_putnbrl(int n)
 {
-    int nbr_len;
-    
-    nbr_len = ft_nbrlen(n);
 	if (n == 0)
 	{
-		ft_putstrlen("0");
-		return (1);
+		return (ft_putcharl(n));
 	}
 	if (n == -2147483648)
 	{
-		ft_putstrlen("-2147483648");
-		return (nbr_len);
+		return (ft_putstrlen("-2147483648"));
 	}
 	if (n < 0)
 	{
@@ -60,5 +54,5 @@ int ft_putnbrl(int n)
 		n = n + 48;
 		ft_putcharl(n);
 	}
-    return (nbr_len);
+	return (ft_nbrlen(n));
 }

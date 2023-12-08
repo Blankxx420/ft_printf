@@ -6,32 +6,31 @@
 /*   By: brguicho <brguicho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:12:28 by brguicho          #+#    #+#             */
-/*   Updated: 2023/11/16 12:43:49 by brguicho         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:07:29 by brguicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-static	int ft_check_char(char c)
+static int	ft_check_char(char c)
 {
-	if (c == '%' || c == 'c' || c == 's' || c == 'p' ||
-		c == 'i' || c == 'd' || c == 'x' || c == 'X' || c == 'u')
+	if (c == '%' || c == 'c' || c == 's' || c == 'p'
+		|| c == 'i' || c == 'd' || c == 'x' || c == 'X' || c == 'u')
 		return (1);
 	return (0);
 }
 
 int	ft_print_pointer(va_list ptr)
 {
-	va_list cpy;
-	int 	len;
-	
+	va_list	cpy;
+	int		len;
+
 	len = 0;
 	va_copy(cpy, ptr);
 	if (va_arg(cpy, unsigned long int) != 0)
 	{
 		len += ft_putstrlen("0x");
-		len += ft_putnbr_basel(va_arg(ptr, unsigned long int), "0123456789abcdef");
+		len += ft_putnbr_basel(va_arg(ptr, unsigned int), "0123456789abcdef");
 	}
 	else
 		len += ft_putstrlen("(nil)");
@@ -39,9 +38,10 @@ int	ft_print_pointer(va_list ptr)
 	return (len);
 }
 
-int ft_check_flag(char c, va_list ptr)
+int	ft_check_flag(char c, va_list ptr)
 {
-	int len;
+	int	len;
+
 	len = 0;
 	if (c == 'c')
 		len += ft_putcharl(va_arg(ptr, int));
